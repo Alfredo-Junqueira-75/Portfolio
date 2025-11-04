@@ -3,8 +3,10 @@ package org.junqueira.portfolio
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -21,12 +23,20 @@ fun App() {
     AppTheme {
         Scaffold(
             topBar = { TopBar() },
+
             modifier = Modifier
                 .background(color = MaterialTheme.colorScheme.background)
-                .padding(horizontal = 128.dp)
+                .padding(horizontal = 220.dp)
                 .fillMaxSize(),
-        ) {
+        ) { innerPadding ->
 
+            Profile(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .padding(top = 16.dp)
+                    .wrapContentHeight()
+                    .fillMaxWidth()
+            )
         }
     }
 }
