@@ -1,12 +1,16 @@
 package org.junqueira.portfolio
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -30,13 +34,35 @@ fun App() {
                 .fillMaxSize(),
         ) { innerPadding ->
 
-            Profile(
+            LazyColumn(
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
-                    .padding(innerPadding)
-                    .padding(top = 16.dp)
-                    .wrapContentHeight()
-                    .fillMaxWidth()
-            )
+                    .padding(horizontal = 32.dp)
+
+            ) {
+                item {
+                    Profile(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .padding(top = 16.dp)
+                            .wrapContentHeight()
+                            .fillMaxWidth()
+
+                    )
+                }
+                item {
+                    Spacer(
+                        modifier = Modifier
+                            .height(16.dp)
+                    )
+                }
+                item {
+                    Projects(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                    )
+                }
+            }
         }
     }
 }

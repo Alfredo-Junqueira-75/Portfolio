@@ -54,10 +54,10 @@ fun TopBar (
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = modifier
-                .background(color = MaterialTheme.colorScheme.background)
+                .background(color = MaterialTheme.colorScheme.background.copy(alpha = 0.9f))
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp, vertical = 8.dp)
-                //.blur(16.dp)
+
 
         ) {
             Row(

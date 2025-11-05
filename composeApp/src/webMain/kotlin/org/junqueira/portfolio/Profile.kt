@@ -39,7 +39,6 @@ fun Profile(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .padding(horizontal = 32.dp),
     ) {
         Column(
             modifier = Modifier
