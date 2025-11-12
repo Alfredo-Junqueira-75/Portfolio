@@ -1,4 +1,4 @@
-package org.junqueira.portfolio
+package org.junqueira.portfolio.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

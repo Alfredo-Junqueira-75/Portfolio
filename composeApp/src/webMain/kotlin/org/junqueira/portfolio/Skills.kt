@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import org.junqueira.portfolio.component.SkillCard
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.icons8_phone_32
 

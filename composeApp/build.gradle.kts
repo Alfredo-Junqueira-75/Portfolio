@@ -29,6 +29,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation("androidx.core:core:1.17.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

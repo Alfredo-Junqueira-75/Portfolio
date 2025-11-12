@@ -1,6 +1,7 @@
 package org.junqueira.portfolio
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -39,6 +40,7 @@ fun App() {
         ) { innerPadding ->
 
             LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .padding(horizontal = 32.dp)
@@ -56,22 +58,10 @@ fun App() {
                     )
                 }
                 item {
-                    Spacer(
-                        modifier = Modifier
-                            .height(16.dp)
-                    )
-                }
-                item {
                     Projects(
                         modifier = Modifier
                             .padding(innerPadding)
 
-                    )
-                }
-                item {
-                    Spacer(
-                        modifier = Modifier
-                            .height(16.dp)
                     )
                 }
                 item {
@@ -81,9 +71,9 @@ fun App() {
                     )
                 }
                 item {
-                    Spacer(
+                    AboutMe(
                         modifier = Modifier
-                            .height(16.dp)
+                            .padding(innerPadding)
                     )
                 }
             }
