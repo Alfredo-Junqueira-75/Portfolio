@@ -32,7 +32,6 @@ fun App() {
     AppTheme {
         Scaffold(
             topBar = { TopBar() },
-
             modifier = Modifier
                 .background(color = MaterialTheme.colorScheme.background)
                 .padding(horizontal = 220.dp)
@@ -72,6 +71,18 @@ fun App() {
                 }
                 item {
                     AboutMe(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                    )
+                }
+                item {
+                    Contact(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                    )
+                }
+                item {
+                    BottomBar(
                         modifier = Modifier
                             .padding(innerPadding)
                     )

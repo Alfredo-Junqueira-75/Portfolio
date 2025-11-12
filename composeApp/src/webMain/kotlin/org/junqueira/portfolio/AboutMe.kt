@@ -26,7 +26,7 @@ fun AboutMe(
         border = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.4f)),
 
         modifier = modifier
-            .widthIn(1096.dp)
+            .widthIn(max = 1096.dp)
             .wrapContentHeight()
     ) {
         Text(
@@ -43,6 +43,7 @@ fun AboutMe(
                     "Ad assumenda consequuntur ut doloremque neque sit quibusdam consequatur. Ut voluptatem ipsam sed quia dolorum in doloremque voluptatem. Ab saepe laudantium eos rerum sunt et tempora error qui quod dignissimos. Quo tempora similique eos voluptatem sequi ut incidunt voluptates sit pariatur possimus.\n" +
                     "\n" +
                     "Ut neque necessitatibus in fugiat enim sit ipsa consequatur. Et tempore consequatur quo alias voluptate a quia maxime. Sed rerum doloremque sit accusantium delectus vel iusto vitae id earum enim. A quia asperiores id harum totam non voluptates commodi aut iure consequuntur est galisum error.",
+            style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Left,
             color = Color.Gray,
             modifier = Modifier

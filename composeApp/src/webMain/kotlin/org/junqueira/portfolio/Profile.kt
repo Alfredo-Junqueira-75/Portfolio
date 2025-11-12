@@ -57,6 +57,7 @@ fun Profile(
                 text = "Building clean and user-friendly Android apps with a focus on great experience.",
                 minLines = 2,
                 style = MaterialTheme.typography.headlineSmall,
+                color = Color.Gray,
                 modifier = Modifier
                     .padding(top = 8.dp)
             )
