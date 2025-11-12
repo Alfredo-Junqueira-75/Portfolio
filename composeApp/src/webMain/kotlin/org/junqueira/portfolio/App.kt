@@ -23,15 +23,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 import org.junqueira.portfolio.ui.theme.AppTheme
 
 
 @Composable
 fun App() {
-
+    val lazyListState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
     AppTheme {
         Scaffold(
-            topBar = { TopBar() },
+            topBar = {
+                TopBar(
+                    lazylistState = lazyListState,
+                    coroutineScope = coroutineScope
+                ) },
             modifier = Modifier
                 .background(color = MaterialTheme.colorScheme.background)
                 .padding(horizontal = 220.dp)
@@ -39,6 +45,7 @@ fun App() {
         ) { innerPadding ->
 
             LazyColumn(
+                state = lazyListState,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
@@ -53,7 +60,6 @@ fun App() {
                             .padding(top = 16.dp)
                             .wrapContentHeight()
                             .fillMaxWidth()
-
                     )
                 }
                 item {
@@ -82,6 +88,7 @@ fun App() {
                     )
                 }
                 item {
+
                     BottomBar(
                         modifier = Modifier
                             .padding(innerPadding)
@@ -90,4 +97,5 @@ fun App() {
             }
         }
     }
+
 }

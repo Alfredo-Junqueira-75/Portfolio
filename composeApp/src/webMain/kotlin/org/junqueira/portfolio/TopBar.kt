@@ -1,51 +1,45 @@
 package org.junqueira.portfolio
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.Button
-import androidx.compose.material3.FilledIconButton
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.ShapeDefaults
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.skia.ColorChannel
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.icons8_dev_96
 import portfolio.composeapp.generated.resources.icons8_world_24
 
+
+
 @Composable
 fun TopBar (
+    lazylistState: LazyListState,
+    coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier,
 
-) {
+    ) {
     Column (
         modifier = modifier,
     ) {
@@ -81,7 +75,9 @@ fun TopBar (
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 TextButton(
-                    onClick = { },
+                    onClick = {
+                        scrollToTheSection(1, coroutineScope, lazylistState)
+                    },
                     modifier = Modifier.padding(horizontal = 8.dp),
                 ) {
                     Text(
@@ -90,7 +86,9 @@ fun TopBar (
                     )
                 }
                 TextButton(
-                    onClick = { },
+                    onClick = {
+                        scrollToTheSection(2, coroutineScope, lazylistState)
+                    },
                     modifier = Modifier.padding(horizontal = 8.dp),
                 ) {
                     Text(
@@ -99,7 +97,9 @@ fun TopBar (
                     )
                 }
                 TextButton(
-                    onClick = {},
+                    onClick = {
+                        scrollToTheSection(3, coroutineScope, lazylistState)
+                    },
                     modifier = Modifier.padding(horizontal = 8.dp),
                 ) {
                     Text(
@@ -108,7 +108,9 @@ fun TopBar (
                     )
                 }
                 TextButton(
-                    onClick = { },
+                    onClick = {
+                        scrollToTheSection(4, coroutineScope, lazylistState)
+                    },
                     modifier = Modifier.padding(horizontal = 8.dp),
                 ) {
                     Text(
@@ -117,7 +119,9 @@ fun TopBar (
                     )
                 }
                 OutlinedButton(
-                    onClick = { },
+                    onClick = {
+
+                    },
                     shape = ShapeDefaults.Medium,
                     modifier = Modifier
                         .padding(start = 8.dp, top = 8.dp, end = 4.dp, bottom = 8.dp)
@@ -135,7 +139,9 @@ fun TopBar (
                     )
                 }
                 Button(
-                    onClick = { },
+                    onClick = {
+                        scrollToTheSection(4, coroutineScope, lazylistState)
+                    },
                     shape = ShapeDefaults.Medium,
                     modifier = Modifier
                         .padding(start = 4.dp, top = 8.dp, end = 8.dp, bottom = 8.dp)
@@ -150,6 +156,11 @@ fun TopBar (
             color = Color.Gray,
             thickness = 2.dp,
         )
+    }
+}
 
+fun scrollToTheSection(index: Int, coroutineScope: CoroutineScope, lazyListState: LazyListState) {
+    coroutineScope.launch {
+        lazyListState.animateScrollToItem(index)
     }
 }

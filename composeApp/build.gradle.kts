@@ -20,6 +20,8 @@ kotlin {
     }
     
     sourceSets {
+        val jsMain by getting
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -30,6 +32,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation("androidx.core:core:1.17.0")
+            implementation("androidx.compose:compose-bom:2025.10.01")
+
+            jsMain
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -1,49 +1,34 @@
 package org.junqueira.portfolio
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.ShapeDefaults
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.min
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.icons8_github_48
 import portfolio.composeapp.generated.resources.icons8_gmail_50
 import portfolio.composeapp.generated.resources.icons8_linkedin_48
+import kotlin.js.ExperimentalWasmJsInterop
+import kotlin.js.js
 
 
 @Composable
 fun Contact(
     modifier: Modifier
 ) {
-    var name by rememberSaveable { mutableStateOf("") }
-    var email by rememberSaveable { mutableStateOf("") }
-    var message by rememberSaveable { mutableStateOf("") }
+    var name by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var message by remember { mutableStateOf("") }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -105,7 +90,12 @@ fun Contact(
               .fillMaxWidth()
         ) {
             Button(
-                onClick = { },
+                onClick = {
+                    sendEmail(name = name, email = email, message = message)
+                    name = ""
+                    email = ""
+                    message = ""
+                },
                 shape = ShapeDefaults.Medium,
                 modifier = Modifier
                     .widthIn(max = 450.dp, min = 320.dp)
@@ -123,7 +113,10 @@ fun Contact(
                 .padding(top = 16.dp)
         ) {
             IconButton(
-                onClick = { },
+
+                onClick = {
+                    js("window.open('https://github.com/Alfredo-Junqueira-75/', '_blank')")
+                },
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .size(48.dp)
@@ -134,7 +127,9 @@ fun Contact(
                 )
             }
             IconButton(
-                onClick = { },
+                onClick = {
+                    js("window.open('https://www.linkedin.com/in/alfredoaj/', '_blank')")
+                },
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .size(48.dp)
@@ -145,7 +140,9 @@ fun Contact(
                 )
             }
             IconButton(
-                onClick = { },
+                onClick = {
+                    js("window.location.href = 'mailto:alfredojunqueira75@gmail.com'")
+                },
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .size(48.dp)
@@ -155,7 +152,31 @@ fun Contact(
                     contentDescription = null,
                 )
             }
+
         }
 
     }
 }
+
+@OptIn(ExperimentalWasmJsInterop::class)
+fun sendEmail(name: String, email: String, message: String): Unit = js(
+    """
+    var templateParams = {
+      name: name,
+      email: email,
+      message: message,
+      notes: 'Check this out!'
+    };
+
+    emailjs.send('service_g66c6cf', 'template_bddrb1t', templateParams).then(
+      function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      function(error) {
+        console.log('FAILED...', error);
+      }
+    );
+    """
+)
+
+
