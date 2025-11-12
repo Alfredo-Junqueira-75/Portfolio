@@ -87,6 +87,7 @@ fun ProjectCard(
             )
             Text(
                 text = project.description,
+                style = MaterialTheme.typography.bodyLarge,
                 color = Color.Gray,
                 modifier = Modifier
                     .padding(vertical = 8.dp, horizontal = 16.dp)

@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -24,6 +27,7 @@ import org.junqueira.portfolio.ui.theme.AppTheme
 
 @Composable
 fun App() {
+
     AppTheme {
         Scaffold(
             topBar = { TopBar() },
@@ -38,6 +42,7 @@ fun App() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .padding(horizontal = 32.dp)
+
 
             ) {
                 item {
@@ -60,6 +65,25 @@ fun App() {
                     Projects(
                         modifier = Modifier
                             .padding(innerPadding)
+
+                    )
+                }
+                item {
+                    Spacer(
+                        modifier = Modifier
+                            .height(16.dp)
+                    )
+                }
+                item {
+                    Skills(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                    )
+                }
+                item {
+                    Spacer(
+                        modifier = Modifier
+                            .height(16.dp)
                     )
                 }
             }
