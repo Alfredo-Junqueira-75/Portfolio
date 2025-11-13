@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.junqueira.portfolio.ui.theme.AppTheme
 
@@ -55,6 +57,8 @@ fun App() {
             ) {
                 item {
                     Profile(
+                        coroutineScope = coroutineScope,
+                        lazylistState = lazyListState,
                         modifier = Modifier
                             .padding(innerPadding)
                             .padding(top = 16.dp)
@@ -98,4 +102,10 @@ fun App() {
         }
     }
 
+}
+
+fun scrollToTheSection(index: Int, coroutineScope: CoroutineScope, lazyListState: LazyListState) {
+    coroutineScope.launch {
+        lazyListState.animateScrollToItem(index)
+    }
 }

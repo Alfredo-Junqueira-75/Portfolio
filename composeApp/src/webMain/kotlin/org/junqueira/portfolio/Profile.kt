@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -27,12 +28,15 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.CoroutineScope
 import org.jetbrains.compose.resources.painterResource
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.profile_foto
 
 @Composable
 fun Profile(
+    lazylistState: LazyListState,
+    coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -62,7 +66,7 @@ fun Profile(
                     .padding(top = 8.dp)
             )
             Button(
-                onClick = {  },
+                onClick = { scrollToTheSection(1, coroutineScope, lazylistState) },
                 shape = ShapeDefaults.Medium,
                 modifier = Modifier
                     .padding(top = 16.dp)

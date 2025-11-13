@@ -158,9 +158,3 @@ fun TopBar (
         )
     }
 }
-
-fun scrollToTheSection(index: Int, coroutineScope: CoroutineScope, lazyListState: LazyListState) {
-    coroutineScope.launch {
-        lazyListState.animateScrollToItem(index)
-    }
-}
