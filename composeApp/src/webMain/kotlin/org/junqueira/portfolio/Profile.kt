@@ -74,13 +74,13 @@ fun Profile(
 
         ) {
             Text(
-                text = "Alfredo Junqueira, Android Developer",
+                text = "Hi there, my name is Alfredo Junqueira, Android Developer",
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.Bold,
 
             )
             Text(
-                text = "Building clean and user-friendly Android apps with a focus on great experience.",
+                text = "I build clean and user friendly Android apps, always with a focus on great experience.",
                 style = MaterialTheme.typography.headlineSmall,
                 color = Color.Gray,
                 modifier = Modifier

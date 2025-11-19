@@ -24,6 +24,7 @@ import kotlin.js.ExperimentalWasmJsInterop
 import kotlin.js.js
 
 
+@OptIn(ExperimentalWasmJsInterop::class)
 @Composable
 fun Contact(
     modifier: Modifier

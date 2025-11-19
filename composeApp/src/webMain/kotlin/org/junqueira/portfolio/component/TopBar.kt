@@ -42,7 +42,8 @@ fun TopBar (
 
     ) {
     Column (
-        modifier = modifier,
+        modifier = modifier
+            .background(color = Color.Transparent),
     ) {
 
         Row(

@@ -32,9 +32,11 @@ import org.junqueira.portfolio.component.ProjectCard
 import org.junqueira.portfolio.data.projectsList
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.icons8_github_48
+import kotlin.js.ExperimentalWasmJsInterop
 import kotlin.js.js
 
 private val projects = projectsList
+@OptIn(ExperimentalWasmJsInterop::class)
 @Composable
 fun Projects(
     modifier: Modifier = Modifier,
@@ -56,7 +58,7 @@ fun Projects(
         FlowRow(
             horizontalArrangement = Arrangement.SpaceAround,
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            itemVerticalAlignment = Alignment.CenterVertically,
+            itemVerticalAlignment = Alignment.Top,
             maxItemsInEachRow = 2,
             modifier = modifier
                 .fillMaxSize()

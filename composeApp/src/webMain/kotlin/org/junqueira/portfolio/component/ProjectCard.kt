@@ -3,6 +3,7 @@ package org.junqueira.portfolio.component
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,13 +17,16 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Label
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
@@ -57,16 +61,39 @@ fun ProjectCard(
             .fillMaxWidth()
 
     ) {
-        Image(
-            painter = painterResource(project.image),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-            modifier = Modifier
-                .heightIn(max = 320.dp)
-                .clip(RoundedCornerShape(topStart = 12.dp, bottomStart = 0.dp, bottomEnd = 0.dp, topEnd = 12.dp))
-                .aspectRatio(2f)
+        Box(
+            modifier = modifier
+                .wrapContentSize()
+        ) {
+            Image(
+                painter = painterResource(project.image),
+                contentDescription = null,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier
+                    .heightIn(max = 320.dp)
+                    .clip(RoundedCornerShape(topStart = 12.dp, bottomStart = 0.dp, bottomEnd = 0.dp, topEnd = 12.dp))
+                    .aspectRatio(2f)
 
-        )
+            )
+            if (project.isLast) {
+                Box(
+                    contentAlignment = Alignment.TopEnd,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = "Last",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .background(color = Color.LightGray.copy(alpha = 0.5f), ShapeDefaults.Medium)
+                            .border(2.dp, Color.Black, ShapeDefaults.Medium)
+                            .padding(8.dp),
+                    )
+                }
+            }
+        }
         Column(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier

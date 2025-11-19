@@ -73,7 +73,6 @@ fun App() {
                             color = Color.Gray,
                             thickness = 2.dp
                         )
-
                         NavigationDrawerItem(
                             label = { Text(text = "Projects") },
                             selected = false,
@@ -81,7 +80,6 @@ fun App() {
                                 scrollToTheSection(1, coroutineScope, lazyListState)
                                 coroutineScope.launch {state.close()}
                             }
-
                         )
                         NavigationDrawerItem(
                             label = { Text(text = "Skills") },
@@ -90,7 +88,6 @@ fun App() {
                                 scrollToTheSection(2, coroutineScope, lazyListState)
                                 coroutineScope.launch {state.close()}
                             }
-
                         )
                         NavigationDrawerItem(
                             label = { Text(text = "About") },
@@ -99,7 +96,6 @@ fun App() {
                                 scrollToTheSection(3, coroutineScope, lazyListState)
                                 coroutineScope.launch {state.close()}
                             }
-
                         )
                         NavigationDrawerItem(
                             label = { Text(text = "Contact") },
@@ -108,7 +104,6 @@ fun App() {
                                 scrollToTheSection(4, coroutineScope, lazyListState)
                                 coroutineScope.launch {state.close()}
                             }
-
                         )
                         NavigationDrawerItem(
                             label = { Text(text = "Get in Touch") },
@@ -117,9 +112,7 @@ fun App() {
                                 scrollToTheSection(4, coroutineScope, lazyListState)
                                 coroutineScope.launch {state.close()}
                             }
-
                         )
-
                     }
                 }
             },
@@ -138,7 +131,6 @@ fun App() {
                     } else {
                         gestureEnabled = true
                     }
-
                 },
                 floatingActionButton = {
                     if (width < 600.dp) {
@@ -167,7 +159,7 @@ fun App() {
                 modifier = Modifier
                     .background(color = MaterialTheme.colorScheme.background)
                     .fillMaxSize(),
-            ) { innerPadding ->
+                ) { innerPadding ->
 
                 LazyColumn(
                     state = lazyListState,
