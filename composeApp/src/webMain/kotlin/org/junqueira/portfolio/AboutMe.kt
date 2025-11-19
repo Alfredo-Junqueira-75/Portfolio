@@ -13,7 +13,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.serialization.StringFormat
-
+import org.jetbrains.compose.resources.stringResource
+import portfolio.composeapp.generated.resources.Res
+import portfolio.composeapp.generated.resources.about_me
 
 
 @Composable
@@ -38,11 +40,7 @@ fun AboutMe(
                 .padding(bottom = 16.dp, top = 32.dp, start = 32.dp, end = 32.dp)
         )
         Text(
-            text = "Lorem ipsum dolor sit amet. Et iste voluptas est autem tenetur ut voluptatem voluptates est nostrum dolores. Cum provident eveniet qui porro sint aut quos dignissimos aut esse architecto qui dolorum commodi ut corrupti exercitationem. Quo unde omnis id nostrum culpa aut dolor illo quo facilis tempora est numquam quas. Id explicabo dicta et dicta quia et corrupti quae qui minus unde sit suscipit possimus sit voluptatem nobis.\n" +
-                    "\n" +
-                    "Ad assumenda consequuntur ut doloremque neque sit quibusdam consequatur. Ut voluptatem ipsam sed quia dolorum in doloremque voluptatem. Ab saepe laudantium eos rerum sunt et tempora error qui quod dignissimos. Quo tempora similique eos voluptatem sequi ut incidunt voluptates sit pariatur possimus.\n" +
-                    "\n" +
-                    "Ut neque necessitatibus in fugiat enim sit ipsa consequatur. Et tempore consequatur quo alias voluptate a quia maxime. Sed rerum doloremque sit accusantium delectus vel iusto vitae id earum enim. A quia asperiores id harum totam non voluptates commodi aut iure consequuntur est galisum error.",
+            text = stringResource(Res.string.about_me),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Left,
             color = Color.Gray,

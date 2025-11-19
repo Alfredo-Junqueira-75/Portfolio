@@ -8,9 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import org.junqueira.portfolio.component.SkillCard
+import org.junqueira.portfolio.data.skillsList
 import portfolio.composeapp.generated.resources.Res
-import portfolio.composeapp.generated.resources.icons8_phone_32
 
+private object Skills {
+    val skills = skillsList
+}
 @Composable
 fun Skills(
     modifier: Modifier = Modifier,
@@ -27,6 +30,7 @@ fun Skills(
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(vertical = 16.dp)
                 .wrapContentHeight()
         )
         FlowRow(
@@ -37,15 +41,16 @@ fun Skills(
                 .fillMaxWidth(),
 
         ) {
-            repeat(6){
+            Skills.skills.forEach { skill ->
                 Spacer(modifier = Modifier.width(4.dp))
                 SkillCard(
-                    icon = Res.drawable.icons8_phone_32,
-                    skillTitle = "category1",
-                    skills = listOf("skill1", "skill2", "skill3", "skill4", "skill5", "skill6", "skill7", "skill8"),
+                    icon = skill.painter,
+                    skillTitle = skill.title,
+                    skills = skill.skills
                 )
                 Spacer(modifier = Modifier.width(4.dp))
             }
+
 
         }
     }

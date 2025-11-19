@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="myname">Alfredo Junqueira</string>
+    <string name="about_me">My name is Alfredo Junqueira, I'm an Android developer with hands-on experience building native applications in Kotlin, using Jetpack Compose, MVVM, and REST integrations to deliver fluid and high-performance interfaces. My work with mobile testing has strengthened my ability to analyze logs, identify failures, and improve application reliability, resulting in reduced recurring errors and more stable builds. In personal and academic projects, I develop complete components, from UI to navigation, status, caching, and local persistence. I am constantly dedicated to learning and clean code, seeking to create scalable and well-structured solutions. I always strive to transform technical knowledge into real impact for the user and the team.\nSee what I'm building or contact me to collaborate on something new.</string>
 </resources>

@@ -1,5 +1,6 @@
-package org.junqueira.portfolio
+package org.junqueira.portfolio.component
 
+import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,8 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
+import org.junqueira.portfolio.scrollToTheSection
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.icons8_dev_96
 import portfolio.composeapp.generated.resources.icons8_world_24
@@ -50,13 +51,13 @@ fun TopBar (
             modifier = modifier
                 .background(color = MaterialTheme.colorScheme.background.copy(alpha = 0.9f))
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp)
 
 
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = modifier
+                    .padding(horizontal = 16.dp)
             ) {
                 Image(
                     painter = painterResource(Res.drawable.icons8_dev_96),
@@ -71,7 +72,8 @@ fun TopBar (
                     )
             }
             Row(
-                modifier = modifier,
+                modifier = modifier
+                    .padding(horizontal = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 TextButton(
@@ -144,7 +146,7 @@ fun TopBar (
                     },
                     shape = ShapeDefaults.Medium,
                     modifier = Modifier
-                        .padding(start = 4.dp, top = 8.dp, end = 8.dp, bottom = 8.dp)
+                        .padding(start = 4.dp, top = 8.dp, bottom = 8.dp)
                 ) {
                     Text(
                         text = "Get in Touch",

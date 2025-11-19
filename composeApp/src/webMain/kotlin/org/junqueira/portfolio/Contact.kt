@@ -13,7 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import org.jetbrains.compose.resources.painterResource
+import org.junqueira.portfolio.utils.isValidEmail
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.icons8_github_48
 import portfolio.composeapp.generated.resources.icons8_gmail_50
@@ -91,10 +93,12 @@ fun Contact(
         ) {
             Button(
                 onClick = {
-                    sendEmail(name = name, email = email, message = message)
-                    name = ""
-                    email = ""
-                    message = ""
+                    if (name.isNotBlank() && email.isNotBlank() && message.isNotBlank() && isValidEmail(email)) {
+                        sendEmail(name = name, email = email, message = message)
+                        name = ""
+                        email = ""
+                        message = ""
+                    }
                 },
                 shape = ShapeDefaults.Medium,
                 modifier = Modifier

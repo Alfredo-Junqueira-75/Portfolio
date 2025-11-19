@@ -7,7 +7,7 @@ data class Project(
     val description: String = "",
     val image: DrawableResource,
     val tags: List<String>,
-    val githubUrl: String,
+    val openGithub: () -> Unit,
     val demoUrl: String,
     val isLast: Boolean = false,
 )

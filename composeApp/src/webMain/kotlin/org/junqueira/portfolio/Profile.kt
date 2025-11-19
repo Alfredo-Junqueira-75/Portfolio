@@ -4,9 +4,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyListState
@@ -39,27 +44,43 @@ fun Profile(
     coroutineScope: CoroutineScope,
     modifier: Modifier = Modifier,
 ) {
-    Row(
+    FlowRow (
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalArrangement = Arrangement.Center,
+        itemVerticalAlignment = Alignment.CenterVertically,
         modifier = modifier
     ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .weight(2f)
+                .widthIn(max = 280.dp)
+                .fillMaxSize(0.4f)
+                .aspectRatio(1f)
+                .clip(CircleShape)
+        ) {
+            Image(
+                painter = painterResource(Res.drawable.profile_foto),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
+        }
         Column(
             modifier = Modifier
-                .padding(horizontal = 32.dp)
+                .padding(16.dp)
                 .weight(2f)
 
         ) {
             Text(
-                text = "Alfredo Junqueira, Junior Android Developer",
-                maxLines = 2,
+                text = "Alfredo Junqueira, Android Developer",
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.Bold,
 
             )
             Text(
                 text = "Building clean and user-friendly Android apps with a focus on great experience.",
-                minLines = 2,
                 style = MaterialTheme.typography.headlineSmall,
                 color = Color.Gray,
                 modifier = Modifier
@@ -75,22 +96,6 @@ fun Profile(
                     text = "View My Work",
                 )
             }
-        }
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .wrapContentSize()
-                .padding(start = 8.dp)
-                .weight(2f)
-        ) {
-            Image(
-                painter = painterResource(Res.drawable.profile_foto),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(480.dp)
-                    .clip(CircleShape)
-            )
         }
     }
 }
